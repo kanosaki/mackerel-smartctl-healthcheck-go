@@ -9,7 +9,7 @@ import (
 )
 
 func checkDeviceStatus(dev string) (int, error) {
-	cmd := exec.Command("smartctl", "-n", "standby", "-H", dev)
+	cmd := exec.Command("smartctl", "-a", dev)
 	if err := cmd.Run(); err != nil {
 		if exiterr, ok := err.(*exec.ExitError); ok {
 			if status, ok := exiterr.Sys().(syscall.WaitStatus); ok {
